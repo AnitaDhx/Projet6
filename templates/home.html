@@ -1,0 +1,42 @@
+<html>
+    <title>Tags</title>
+    
+    <body>
+        <h1>Please enter your Question</h1>
+        
+        <form action = "" method="POST">
+        {{ form.hidden_tag() }}
+         <p>
+            {{ form.Question.label }}<br>
+            {{ form.Question(size=32) }}
+            {% for error in form.Question.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.Body.label }}<br>
+            {{ form.Body(size=32) }}
+            {% for error in form.Body.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+
+        
+        
+        </form>
+        
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        
+    </body>
+    
+</html>
